@@ -1,0 +1,4 @@
+{
+  "name": "AlgoMap City",
+  "description": "A SimCity-style algorithm visualizer. Build a city map with nodes, connect them with roads, and visualize Dijkstra and A* pathfinding in real-time."
+}
