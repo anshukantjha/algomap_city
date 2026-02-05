@@ -126,8 +126,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
                 value={algorithm}
                 onChange={(e) => setAlgorithm(e.target.value as AlgorithmType)}
             >
-                <option value="Dijkstra">A* Search</option>
-                <option value="AStar">Dijkstra</option>
+                <option value="AStar">A* Search</option>
+                <option value="Dijkstra">Dijkstra</option>
             </select>
          </div>
       </div>

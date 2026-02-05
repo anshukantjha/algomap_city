@@ -6,7 +6,9 @@ import DataTable from './components/DataTable';
 import EdgeModal from './components/EdgeModal';
 import SettingsPanel from './components/SettingsPanel';
 import { NodeData, EdgeData, NodeType, RoadType, InteractionMode, AlgorithmType, AlgoStep, Multipliers } from './types';
-import { generateAlgorithmSteps } from './services/algorithmService';
+// import { generateAlgorithmSteps } from './services/algorithmService';
+import { runDijkstra } from './services/dijkstra';
+import { runAStar } from './services/astar';
 import { ROAD_MULTIPLIERS, DEFAULT_ROAD_WEIGHT, PRESETS } from './constants';
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
@@ -134,8 +136,13 @@ const App: React.FC = () => {
     if (!startNodeId || !endNodeId) return;
     setCurrentStepIndex(-1);
     setIsPlaying(false);
+
+
     
-    const generatedSteps = generateAlgorithmSteps(nodes, edges, startNodeId, endNodeId, algorithm, multipliers);
+    // const generatedSteps = generateAlgorithmSteps(nodes, edges, startNodeId, endNodeId, algorithm, multipliers);
+    const generatedSteps =  algorithm === 'Dijkstra'
+    ? runDijkstra(nodes, edges, startNodeId, endNodeId)
+    : runAStar(nodes, edges, startNodeId, endNodeId, multipliers);
     setSteps(generatedSteps);
     setIsPlaying(true);
     setCurrentStepIndex(0);
